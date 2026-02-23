@@ -1,10 +1,14 @@
 <div class="form-container" [class.dark-theme]="isDarkMode">
   <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleTheme()"
                     color="primary" aria-label="Toggle dark mode">
-
-    Dark Mode
+    @if (isDarkMode) {
+      <mat-icon>dark_mode</mat-icon>
+    } @else {
+      <mat-icon>light_mode</mat-icon>
+    }
+    {{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}
   </mat-slide-toggle>
-   <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+
   <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
 
     <!-- Username Field -->
@@ -27,7 +31,10 @@
       <mat-label>Password</mat-label>
       <input matInput type="password" placeholder="Enter password" formControlName="password">
       @if (formdata.controls['password'].invalid && formdata.controls['password'].touched) {
-        <mat-error>Password is required and must be at least 8 characters long.</mat-error>
+        <mat-error *ngIf="formdata.get('password')?.hasError('required')">Password is required.</mat-error>
+        <mat-error *ngIf="formdata.get('password')?.hasError('startsWithLetter')">Password must start with a letter.</mat-error>
+        <mat-error *ngIf="formdata.get('password')?.hasError('onlyAlphanumeric')">Password must contain only letters and numbers.</mat-error>
+        <mat-error *ngIf="formdata.get('password')?.hasError('minlength')">Password must be at least 8 characters.</mat-error>
       }
     </mat-form-field>
 
@@ -53,8 +60,9 @@
       <input matInput [matDatepicker]="picker" placeholder="Select a date" formControlName="birthDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      @if (formdata.get('birthDate')?.hasError('required') && formdata.get('birthDate')?.touched) {
-        <mat-error>Birth date is required.</mat-error>
+      @if (formdata.get('birthDate')?.invalid && formdata.get('birthDate')?.touched) {
+        <mat-error *ngIf="formdata.get('birthDate')?.hasError('required')">Birth date is required.</mat-error>
+        <mat-error *ngIf="formdata.get('birthDate')?.hasError('birthDateAfter2006')">You must be born in 2006 or earlier.</mat-error>
       }
     </mat-form-field>
 
@@ -71,6 +79,7 @@
     <!-- Submit Button with Ripple -->
     <button mat-raised-button color="primary" type="submit" [disabled]="!formdata.valid"
             matRipple [matRippleColor]="myColor">
+      <mat-icon>thumb_up</mat-icon>
       Click Here
     </button>
 
