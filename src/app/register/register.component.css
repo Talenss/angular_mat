@@ -1,0 +1,150 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 40px;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 50%;
+  margin: 0 auto 16px auto;
+  display: block;
+}
+
+/* Dark Theme */
+.form-container.dark-theme {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.form-container.dark-theme mat-form-field {
+  background-color: #2d2d2d;
+  border-radius: 4px;
+}
+
+.form-container.dark-theme .mat-mdc-form-field-label,
+.form-container.dark-theme .mat-mdc-floating-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.form-container.dark-theme .mat-mdc-input-element {
+  color: #ffffff;
+}
+
+.form-container.dark-theme mat-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-container.dark-theme input,
+.form-container.dark-theme textarea {
+  color: #ffffff;
+}
+
+.form-container.dark-theme .radio-label,
+.form-container.dark-theme .slider-label {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.form-container.dark-theme mat-radio-button {
+  color: #ffffff;
+}
+
+.form-container.dark-theme .mat-primary .mat-slide-toggle-thumb {
+  background-color: #bb86fc;
+}
+
+.form-container.dark-theme .mat-primary .mat-slide-toggle-bar {
+  background-color: rgba(187, 134, 252, 0.5);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 50%;
+  margin: 0 auto 16px auto;
+  display: block;
+}
+
+button {
+  width: 50%;
+  margin-top: 24px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 0;
+}
+
+.slider-group {
+  width: 50%;
+  margin: 0 auto 16px auto;
+}
+
+.slider-label {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+.radio-group {
+  width: 50%;
+  margin: 0 auto 16px auto;
+}
+
+.radio-label {
+  display: block;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.gender-radio-group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+mat-radio-button {
+  margin-right: 12px;
+}
+
+mat-icon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+mat-slide-toggle mat-icon {
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+mat-icon {
+  margin-right: 8px;
+  color: #bb86fc;
+}
+
+.form-container.dark-theme mat-icon {
+  color: #ffffff;
+}
+
+
